@@ -31,33 +31,59 @@ exports.ReadProduct=(req,res)=>{
 }
 
 // Update 
-
 exports.UpdateProduct=(req,res)=>{
-    let id = req.params.id;
-    let Query = {_id:id};
-    let reqBody = req.body;
-
-    ProductsModel.updateOne(Query,reqBody,(error,data)=>{
-        if(error){
-            res.status(400).json({status:'fail',data:error})
-         }
-         else{
-             res.status(400).json({status:'sucess',data:data})
-         }
+    let id= req.params.id;
+    let Query={_id:id};
+    let reqBody=req.body;
+    ProductsModel.updateOne(Query,reqBody,(err,data)=>{
+        if(err){
+            res.status(400).json({status:"fail",data:err})
+        }
+        else{
+            res.status(200).json({status:"success",data:data})
+        }
     })
-}
+ }
+
+// exports.UpdateProduct=(req,res)=>{
+//     let id = req.params.id;
+//     let Query = {_id:id};
+//     let reqBody = req.body;
+
+//     ProductsModel.updateOne(Query,reqBody,(error,data)=>{
+//         if(error){
+//             res.status(400).json({status:'fail',data:error})
+//          }
+//          else{
+//              res.status(400).json({status:'sucess',data:data})
+//          }
+//     })
+// }
 
 // Delete 
 
 exports.DeleteProduct=(req,res)=>{
-    let id = req.params.id;
-    let Query = {_id:id};
-    ProductsModel.remove(Query,(error,data)=>{
-        if(error){
-            res.status(400).json({status:'fail',data:error})
-         }
-         else{
-             res.status(400).json({status:'sucess',data:data})
-         }
+    let id= req.params.id;
+    let Query={_id:id};
+    ProductsModel.remove(Query,(err,data)=>{
+        if(err){
+            res.status(400).json({status:"fail",data:err})
+        }
+        else{
+            res.status(200).json({status:"success",data:data})
+        }
     })
 }
+
+// exports.DeleteProduct=(req,res)=>{
+//     let id = req.params.id;
+//     let Query = {_id:id};
+//     ProductsModel.remove(Query,(error,data)=>{
+//         if(error){
+//             res.status(400).json({status:'fail',data:error})
+//          }
+//          else{
+//              res.status(400).json({status:'sucess',data:data})
+//          }
+//     })
+// }
